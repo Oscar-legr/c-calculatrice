@@ -1,0 +1,78 @@
+#include <iostream>
+#include <fstream>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+	float val1, val2, resultat;
+	char operateur1, operateur3, operateur4;
+	ofstream FichierLog;
+	time_t tmm = time(0);
+	char* dt = ctime(&tmm);
+		while(true)
+        {
+			cout<<"Calcul arithmetique : A"<<endl;
+			cout<<"Calcul trigonometrique : B"<<endl;
+			cin>>operateur3;
+			  switch(operateur3)
+              {
+                case 'A' : cout<<"Saisir le calcul :";
+						   cin>>val1>>operateur1>>val2;
+
+                           switch (operateur1)
+                           {
+                             case '+' :
+							 resultat=val1+val2;
+							 break;
+							 case '-' :
+							 resultat=val1-val2;
+							 break;
+							 case '*' :
+							 resultat=val1*val2;
+							 break;
+							 case '/' :
+							 resultat=val1/val2;
+                             break;
+						   }
+						   cout<<resultat<<endl;
+						   break;
+						   cout<<resultat;
+				case 'B' : cout<<"Choisir le calcul de sin : A"<<endl;
+						   cout<<"Choisir le calcul de cos : B"<<endl;
+						   cout<<"Choisir le calcul de tan : C"<<endl;
+						   cin>>operateur4;
+
+						   switch (operateur4)
+						   {
+							case 'A' : cout<<"Rentrez la valeur du cote oppose / hypothenuse :";
+									   cin>>val1>>operateur1>>val2;
+
+									   resultat=val1/val2;
+									   cout<<resultat<<endl;
+									   break;
+							case 'B' : cout<<"Rentrez la valeur du cote adjascent et hypothenus :";
+									   cin>>val1>>operateur1>>val2;
+
+									   resultat=val1/val2;
+									   cout<<resultat<<endl;
+									   break;
+							case 'C' : cout<<"Rentrez la valeur du cote oppose et adjascent :";
+									   cin>>val1>>operateur1>>val2;
+
+									   resultat=val1/val2;
+									   cout<<resultat<<endl;
+									   break;
+
+						   }
+
+					 cout<<resultat<<endl;
+					 FichierLog.open("journal.log",ios_base::app);
+					 FichierLog<<val1<<operateur1<<val2<<"="<<resultat<<" "<<dt<<endl;
+					 FichierLog.close();
+
+
+			  }
+		}
+		return 0;
+}
